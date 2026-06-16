@@ -65,6 +65,14 @@ The user's editor or CI normally runs these; reference their findings rather tha
 - `AppSourceCop` — AppSource technical validation (affix, ID ranges, restricted base objects)
 - `LinterCop` (community) — extended diagnostics via `ruleset.json`
 
+## Reference Sources for Current Guidance
+
+AL/Business Central platform behavior changes between releases. When uncertain whether a pattern is still current:
+
+- **Microsoft Learn MCP** (`mcp-configs/mcp-servers.json` → `microsoft-learn`, `https://learn.microsoft.com/api/mcp`) — query for the current Business Central developer documentation rather than relying on training data
+- [alguidelines.dev](https://alguidelines.dev/docs/) — community AL coding guideline catalog (naming, readability, design patterns, performance, error handling)
+- [microsoft/BCQuality](https://github.com/microsoft/BCQuality) — Microsoft-endorsed and community knowledge base documenting specific CodeCop quirks and non-obvious platform behavior (e.g. `SetLoadFields` ordering, `FindSet()` signature changes)
+
 ## Approval Criteria
 
 - **Approve**: No CRITICAL or HIGH issues

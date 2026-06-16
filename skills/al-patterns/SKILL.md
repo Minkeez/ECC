@@ -163,6 +163,36 @@ Never store API keys or tokens as plain `Text` on a table. See `rules/al/securit
 
 Before removing a feature/keyword from an AL codebase, search across **all** files for the keyword — table fields, page actions, permission sets, and event subscribers frequently reference the same feature under different object types. A removal that only touches the obvious file leaves orphaned references that fail to compile or silently stop firing.
 
+### 6. TryFunction for Recoverable Errors
+
+Use a `[TryFunction]` when a caller needs to attempt an operation and branch on success/failure without an uncaught error tearing down the transaction:
+
+```al
+[TryFunction]
+local procedure TryPostDocument(var SalesHeader: Record "Sales Header")
+begin
+    CODEUNIT.Run(CODEUNIT::"Sales-Post", SalesHeader);
+end;
+
+procedure PostWithFallback(var SalesHeader: Record "Sales Header")
+begin
+    if not TryPostDocument(SalesHeader) then
+        LogPostingFailure(SalesHeader, GetLastErrorText());
+end;
+```
+
+### 7. Readability: Avoid Redundant Syntax
+
+Per community AL style guidance (alguidelines.dev), avoid syntax that adds no information:
+
+```al
+// Bad: redundant boolean comparison and unnecessary parentheses
+if (IsActive = true) then
+
+// Good
+if IsActive then
+```
+
 ## Performance
 
 - Use `SetLoadFields` on your **own** local record variables before `FindSet`/`Get` to avoid loading unused columns
@@ -178,6 +208,12 @@ Before removing a feature/keyword from an AL codebase, search across **all** fil
 | Boolean propagation | A loop's return value must reflect every inner decision, not just "it finished" |
 | SingleInstance + timestamp | Pair reentrancy guards with an expiry window, not just a boolean |
 | Interfaces over flags | New behavior should be addable via enum/interface, not nested `if` chains |
+
+## External References
+
+- [alguidelines.dev](https://alguidelines.dev/docs/) — community AL coding guideline catalog: design patterns (Façade, Command Queue, Event Bridge), readability rules, performance patterns
+- [microsoft/BCQuality](https://github.com/microsoft/BCQuality) — knowledge base of specific CodeCop quirks and platform behavior for AI-assisted code review
+- **Microsoft Learn MCP** (`https://learn.microsoft.com/api/mcp`) — query for current Business Central developer documentation when a pattern may have changed between releases
 
 ## Reference
 
