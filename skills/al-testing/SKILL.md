@@ -38,7 +38,7 @@ codeunit 50100 "Loyalty Discount Tests"
     procedure CalculatingDiscountForGoldCustomerAppliesTenPercent()
     var
         Customer: Record Customer;
-        Calculator: Codeunit "Loyalty Discount Calculator";
+        Calculator: Codeunit "Loyalty Discount Mgt.";
         Discount: Decimal;
     begin
         // [GIVEN] a customer on the Gold loyalty tier

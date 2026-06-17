@@ -116,16 +116,16 @@ codeunit 50100 "Import Guard"
     var
         IsRunning: Boolean;
         StartedAt: DateTime;
-        MaxDurationMs: Integer;
+        GuardWindow: Duration;
 
     procedure TryEnter(): Boolean
     begin
-        if IsRunning and (CurrentDateTime - StartedAt < MaxDurationMs) then
+        GuardWindow := 5 * 60 * 1000; // 5 minute guard window (ms)
+        if IsRunning and (CurrentDateTime - StartedAt < GuardWindow) then
             exit(false); // genuinely still running
 
         IsRunning := true;
         StartedAt := CurrentDateTime;
-        MaxDurationMs := 5 * 60 * 1000; // 5 minute guard window
         exit(true);
     end;
 

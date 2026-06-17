@@ -9,8 +9,9 @@ paths:
 
 ## Naming
 
-- Objects: **PascalCase** (`Sales Header`, `PostSalesDoc`)
-- File naming: `ObjectName.ObjectType.al` (e.g. `Customer Card.PageExt.al`, `Sales-Post.CodeunitExt.al`)
+- Objects: **PascalCase** (codeunit `"Sales-Post"`, table `"Sales Header"`)
+- File naming: `ObjectName.ObjectType.al` (e.g. `Customer.TableExt.al`, `CustomerCard.PageExt.al`, `LoyaltyMgt.Codeunit.al`)
+- Note: AL has **no** `codeunitextension` — codeunits cannot be extended; subscribe to events instead
 - Variables: PascalCase for globals/parameters, no Hungarian prefixes
 
 ## Object ID Ranges
