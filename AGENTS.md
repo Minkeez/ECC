@@ -47,6 +47,8 @@ This is a **production-ready AI coding plugin** providing 69 specialized agents,
 | pytorch-build-resolver | PyTorch runtime/CUDA/training errors | PyTorch build/training failures |
 | mle-reviewer | Production ML pipeline review | ML pipelines, evals, serving, monitoring, rollback |
 | typescript-reviewer | TypeScript/JavaScript code review | TypeScript/JavaScript projects |
+| al-reviewer | AL (Business Central) code review | AL/Dynamics 365 Business Central projects |
+| al-build-resolver | AL compile/analyzer error resolution | AL build and CodeCop/AppSourceCop failures |
 
 ## Agent Orchestration
 
