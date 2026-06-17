@@ -156,6 +156,9 @@ skills:
   - visa-doc-translate
   - x-api
 commands:
+  - al-build
+  - al-review
+  - al-test
   - aside
   - auto-update
   - build-fix
